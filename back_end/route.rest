@@ -1,0 +1,27 @@
+POST http://localhost:3500/register
+Content-Type: application/json
+
+{
+  "email": "example@email.com",
+  "username": "exampleUser",
+  "password": "SecurePassword123",
+  "refreshToken" : ""
+}
+###
+
+
+POST http://localhost:3500/auth
+Content-Type: application/json
+
+{
+  "email": "example@email.com",
+  "username": "exampleUser",
+  "password": "SecurePassword123"
+}
+
+###
+GET http://localhost:3500/refresh
+
+###
+
+GET http://localhost:3500/logout
