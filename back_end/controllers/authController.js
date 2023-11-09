@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken')
 
 const handleLogin = async(req, res) =>{
     const user = {username, password} = req.body
-    if(!username || !password) return res.status(400).json({'message': ' Usernmae and password are required.'})
+    if(!username || !password) return res.status(400).json({'message': ' Username and password are required.'})
     
     //check username
     const foundUser = await userModel.findOne({username})

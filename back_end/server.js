@@ -14,8 +14,16 @@ const auth = require("./routes/auth")
 const refresh = require("./routes/refresh")
 const logout = require("./routes/logout")
 
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:3500']
+
+
 connectDb.connectDb()
-app.use(cors())
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true
+  })
+)
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())

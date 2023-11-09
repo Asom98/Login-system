@@ -2,9 +2,9 @@ POST http://localhost:3500/register
 Content-Type: application/json
 
 {
-  "email": "example@email.com",
-  "username": "exampleUser",
-  "password": "SecurePassword123",
+  "email": "test@gmail.co",
+  "username": "test",
+  "password": "testtest",
   "refreshToken" : ""
 }
 ###
@@ -14,9 +14,9 @@ POST http://localhost:3500/auth
 Content-Type: application/json
 
 {
-  "email": "example@email.com",
-  "username": "exampleUser",
-  "password": "SecurePassword123"
+  "email": "test@gmail.co",
+  "username": "test",
+  "password": "testtest"
 }
 
 ###

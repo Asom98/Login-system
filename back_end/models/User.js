@@ -17,7 +17,7 @@ const userSchema = new Schema({
     },
     role: {
         type: String,
-        default: "user", // Default value is set to "user"
+        default: "user",
     },
     refreshToken : String
     
