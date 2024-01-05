@@ -2,20 +2,17 @@ import {useState, useEffect} from 'react'
 import axios from '../api/axios'
 
 export const Users = () => {
-    const [users, setUsers] = useState()
+    const [users, setUsers] = useState([])
 
     useEffect(()=>{
-        const isMounted = true
-        const controller = new AbortController()
 
         const getUsers = async()=>{
             try{
 
                 const response = await axios.get('/users',{
-                    signal: controller.signal
                 })
                 console.log(response.data)
-                isMounted && setUsers(response.data)
+                setUsers(response.data)
 
             }catch(err){
 
@@ -25,25 +22,18 @@ export const Users = () => {
         }
 
         getUsers()
-        return() =>{
-            isMounted = false
-            controller.abort()
-        }
-
-
     }, [])
 
-  return (
+    return (
         <article>
-            <h2>Users List</h2>
-            {users?.lenght
-                ?(
-                    <ul>
-                        {users.map((user, i) =><li key={i}>{user?.username}</li>)}
-                    </ul>
-                ): <p>No users found!</p>
-            }
+          <h2>Users List</h2>
+          <ul>
+            {users.username ? (
+              users.username.map((username, i) => <li key={i}>{username}</li>)
+            ) : (
+              <li>No users found!</li>
+            )}
+          </ul>
         </article>
-
-  )
+    );
 }

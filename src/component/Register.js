@@ -231,7 +231,7 @@ export const Register = () => {
             Have account? <br/>
             <span>
                 {}
-                <a href='/register'>Sign In</a>
+                <a href='/login'>Sign In</a>
             </span>
         </p>
     </section>

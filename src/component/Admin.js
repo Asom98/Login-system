@@ -1,6 +1,5 @@
 import React from 'react'
 import {Users} from '../component/Users'
-import { Link } from 'react-router-dom'
 export const Admin = () => {
   return (
     <section>
@@ -9,7 +8,7 @@ export const Admin = () => {
         <Users />
         <br/>
         <div >
-            <Link to="/">Home </Link>
+        <a href='/home'>Home</a>
         </div>
     </section>
   )

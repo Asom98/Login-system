@@ -1,12 +1,19 @@
-import React, { useRef, useState, useEffect, useContext } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { useRef, useState, useEffect } from 'react'
 import axios from '../api/axios'
 import '../css/App.css' // You can create a Login.css file for styling
 import AuthContext from '../context/authProvider'
+import useAuth from '../hooks/useAuth'
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 const LOGIN_URL = '/auth' // Update with your login endpoint
 
+
 export const Login = () => {
-    const {setAuth} = useContext(AuthContext)
+    const {setAuth} = useAuth()
+
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || "/";
+
     const userRef = useRef()
     const passwordRef = useRef()
     const errRef = useRef()
@@ -34,7 +41,7 @@ export const Login = () => {
             )
             const accessToken = response?.data?.accessToken
             setAuth({username, password, accessToken})
-            setSuccess(true)
+            navigate(from, { replace: true });
             // Clear input fields or perform any necessary actions on successful login
         } catch (err) {
             if (!err.response) {
@@ -49,15 +56,8 @@ export const Login = () => {
     }
 
     return (
-        <>
-            {success ? (
-                <section>
-                    <h1>Login Successful!</h1>
-                    <p>
-                        {/* Redirect or display relevant content for a successful login */}
-                    </p>
-                </section>
-            ) : (
+
+
                 <section>
                     <p ref={errRef} className={errmsg ? "errmsg" : "offscreen"} aria-live='assertive'>{errmsg}</p>
 
@@ -96,7 +96,6 @@ export const Login = () => {
                         </span>
                     </p>
                 </section>
-            )}
-        </>
+
     )
 }

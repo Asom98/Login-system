@@ -13,6 +13,7 @@ const register = require("./routes/register")
 const auth = require("./routes/auth")
 const refresh = require("./routes/refresh")
 const logout = require("./routes/logout")
+const users = require("./routes/user")
 
 const allowedOrigins = ['http://localhost:3000', 'http://localhost:3500']
 
@@ -34,6 +35,7 @@ app.use("/register", register)
 app.use("/auth", auth)
 app.use("/refresh", refresh)
 app.use("/logout", logout)
+app.use("/users", users)
 
 
 app.use(verifyJwt)
